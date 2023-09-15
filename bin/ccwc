@@ -6,4 +6,4 @@ args = ARGF.argv
 file = args.pop
 
 wc = Wc.new(file, args)
-puts wc.read
+puts wc.show

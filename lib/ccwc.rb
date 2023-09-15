@@ -13,9 +13,16 @@
 ## Code
 
 class Wc  
+  attr_reader :file_name
+  
   def initialize(file, args)
+    @file_name = file
     @file = File.read(file)
     @args = args.empty? ? ["-l","-w","-c"] : args
+  end
+  
+  def show
+    "#{read.join(" ")} #{file_name}"
   end
   
   private
