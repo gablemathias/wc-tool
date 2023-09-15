@@ -12,16 +12,19 @@
 
 ## Code
 
-class Wc
-  def initialize(file, *args)
+class Wc  
+  def initialize(file, args)
     @file = File.read(file)
-    @args = args || ["-l","-w","-c"]
+    @args = args.empty? ? ["-l","-w","-c"] : args
   end
   
+  private
+  attr_reader :file
+  
   def read
-    @args.each do |arg|
-      case arg
-      when '-c'
+    @args.map do |argument|
+      case argument
+      when "-c"
         bytes
       when '-l'
         lines
@@ -29,12 +32,12 @@ class Wc
         words
       when '-m'
         characters
+      else
+        break "Invalid Argument"
       end
     end
   end
   
-  private
-  attr_reader :file
   
   def bytes
     file.bytesize.to_s
