@@ -52,23 +52,3 @@ class Wc
     file.each_char.count.to_s
   end
 end
-
-commands = ARGF.argv
-
-file = commands.pop # last-command file
-result = ""
-
-commands.each do |arg| 
-  case arg
-  when '-c'
-    result += File.read(file).bytesize.to_s + " "
-  when '-l'
-    result += File.read(file).each_line.count.to_s + " "
-  when '-w'
-    result += File.read(file).split.size.to_s + " "
-  when '-m'
-    result += File.read(file).each_char.count.to_s + " "
-  end
-end
-
-puts "#{result}#{file}"
