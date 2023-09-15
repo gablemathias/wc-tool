@@ -25,6 +25,8 @@ commands.each do |arg|
     result += File.readlines(file).size.to_s + " "
   when '-w'
     result += File.read(file).split.size.to_s + " "
+  when '-m'
+    result += File.read(file).each_char.count.to_s + " "
   end
 end
 
