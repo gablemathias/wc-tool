@@ -1,17 +1,3 @@
-## Problem:
-# Write Simple Version of WC (word, line, character and byte count of file)
-
-# Dividing the problem into steps 
-
-## Example:
-# Input:
-# -c test.txt
-
-# Output:
-# 341836 test.txt (prints the number of bytes and the corresponding file)
-
-## Code
-
 class Wc  
   attr_reader :file_path
   
