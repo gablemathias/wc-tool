@@ -13,16 +13,18 @@
 ## Code
 
 class Wc  
-  attr_reader :file_name
+  attr_reader :file_path
   
   def initialize(file, args)
-    @file_name = file
+    @file_path = file
     @file = File.read(file)
     @args = args.empty? ? ["-l","-w","-c"] : args
   end
   
   def show
-    "#{read.join(" ")} #{file_name}"
+    return "#{read.join(" ")}" if file_path.is_a? File
+      
+    "#{read.join(" ")} #{file_path}"
   end
   
   private

@@ -2,8 +2,19 @@
 
 require_relative "../lib/ccwc.rb"
 
-args = ARGF.argv
-file = args.pop
-
-wc = Wc.new(file, args)
-puts wc.show
+if File.exist?(ARGV[-1])
+  file = ARGV.pop
+  wc = Wc.new(file, ARGV)
+  puts wc.show
+else
+  args = []
+  while !ARGV.empty?
+    args << ARGV.shift
+  end
+  file = File.new("temp/text.txt", "w")
+  file.puts(ARGF.read)
+  file.close
+  
+  wc = Wc.new(file, args)
+  puts wc.show
+end
